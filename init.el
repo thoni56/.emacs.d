@@ -14,3 +14,24 @@
 (setq c-basic-offset 4)
 (setq c-tab-always-indent t)
 (setq-default indent-tabs-mode nil)
+
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; Compilation keys
+(global-set-key [f10] 'compile)
+(global-set-key [f9] 'next-error)
+(setq compilation-scroll-output t)
+
+
+(global-set-key [kp-delete] 'delete-char)
+(if (eq system-type 'darwin)
+    (setq mac-option-modifier nil
+      mac-command-modifier 'meta
+      x-select-enable-clipboard t))
+
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
