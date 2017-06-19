@@ -35,3 +35,8 @@
   (ansi-color-apply-on-region (point-min) (point-max))
   (toggle-read-only))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+
+;; Extra Makefile-mode pattern
+(setq auto-mode-alist
+        (cons '("Makefile\\.*" . makefile-mode) auto-mode-alist))
