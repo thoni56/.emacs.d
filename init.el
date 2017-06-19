@@ -1,3 +1,16 @@
+(when (eq system-type 'cygwin)
+  ;; For native Cygwin Emacs-w32 we want to use login shells
+  (setenv "PATH" (shell-command-to-string "source ~/.bash_profile; echo -n $PATH"))
+  (setenv "PATH" (concat "/usr/bin" path-separator
+                       (getenv "PATH")))
+  (setq shell-file-name "bash")
+  (setenv "SHELL" shell-file-name)
+  (setq explicit-shell-file-name shell-file-name)
+
+  (setq explicit-bash-args '("--login" "-i"))
+  (setq exec-path (cons "/bin" exec-path))
+  )
+
 ;;; El-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil 'noerror)
