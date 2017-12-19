@@ -22,6 +22,10 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
+;;; Add some Melpa archive
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
 ;;; Formatting and indentation
 (setq-default tab-width 4)
 (setq c-basic-offset 4)
@@ -53,3 +57,6 @@
 ;; Extra Makefile-mode pattern
 (setq auto-mode-alist
         (cons '("Makefile\\.*" . makefile-mode) auto-mode-alist))
+
+;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
