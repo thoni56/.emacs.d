@@ -37,6 +37,7 @@
 ;; Compilation keys
 (global-set-key [f10] 'compile)
 (global-set-key [f9] 'next-error)
+(global-set-key [S-f9] 'previous-error)
 (setq compilation-scroll-output t)
 
 
